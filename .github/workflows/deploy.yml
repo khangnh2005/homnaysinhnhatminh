@@ -1,0 +1,16 @@
+name: 🚀 Deploy HTML to Render
+
+# Bắt sự kiện mỗi khi nhánh main có thay đổi
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-render-deploy:
+    name: 🎉 Trigger Render Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📡 Gọi Deploy Hook của Render
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
